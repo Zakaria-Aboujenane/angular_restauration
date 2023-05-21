@@ -1,0 +1,30 @@
+<div class="container mt-5" >
+<div class="container py-5">
+  <div class="row">
+    <div class="col-lg-3">
+      <app-categories></app-categories>
+    </div>
+    <div class="col-lg-9" style="display: block;height: 700px;">
+      <div class="row" >
+        <div (click)="changeViewMode()" class="hero-button text-center mb-2 col">
+          <a class="btn btn-large btn-success">
+            <i class="{{modeAffichage==='GRID'?'fa fa-table':'fa fa-th-large'}} fa-2x pull-left"  > </i>
+            <span style="font-size:smaller;">Change TO</span>
+            {{modeAffichage==='GRID'?'Table View':'Grid View'}}
+          </a>
+        </div>
+        <div (click)="reload()" class="hero-button text-center mb-2 col">
+          <a class="btn btn-large btn-success">
+            <i class="fa fa-refresh fa-2x pull-left"  > </i>
+            Reload
+          </a>
+        </div>
+      </div>
+      <app-menus [modeAffichage]="modeAffichage"></app-menus>
+
+    </div>
+  </div>
+</div>
+
+</div>
+

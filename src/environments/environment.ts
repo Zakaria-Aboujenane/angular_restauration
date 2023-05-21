@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  host:"restauration/api/restaurant/",
+  ressourcesHost:"http://localhost:8080/restauration/images/",
+  perPageMenus:6,
+  jwtPrefix:"Bearer "
 };
 
 /*

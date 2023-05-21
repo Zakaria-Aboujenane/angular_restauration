@@ -1,0 +1,23 @@
+<div *ngIf="modeAffichage==='GRID'" class="position-relative col-md-4 myTransactions">
+  <div class="card mb-4 product-wap rounded-0">
+    <div class="z-2 card rounded-0">
+      <img class="card-img rounded-0 img-fluid" src="{{ressHost+menu.image}}">
+      <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+        <ul class="list-unstyled">
+          <li><a class="btn btn-success text-white mt-2" routerLink="/single-menu/{{menu.id_menu}}"><i class="fa fa-eye" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-body">
+      <a class="h3 text-decoration-none">{{menu.name}}</a>
+      <p class="text-center mb-0">{{menu.prix}} DH</p>
+    </div>
+  </div>
+</div>
+<tr *ngIf="modeAffichage==='TABLE'" >
+<td>{{menu.id_menu}}</td>
+<td>{{menu.name}}</td>
+<td>{{menu.prix}}</td>
+<td>{{menu.qteMax}}</td>
+<td>{{menu.image}}</td>
+</tr>

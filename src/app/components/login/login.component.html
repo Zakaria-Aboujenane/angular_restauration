@@ -1,0 +1,41 @@
+<div *ngIf="loginFormGroup" class="container-fluid vh-100 mt-5">
+  <div class="">
+    <div class="rounded d-flex justify-content-center">
+      <div class="col-md-6 col-sm-12 shadow-lg p-5 bg-light">
+        <div class="text-center">
+          <h3 class="text-success">Sign In</h3>
+          <div *ngIf="errorMessage!=null && errorMessage!==''">
+            <div class="alert alert-danger" role="alert">
+              {{errorMessage}}
+            </div>
+          </div>
+
+
+        </div>
+        <form [formGroup]="loginFormGroup">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div *ngIf="submitted && loginFormGroup.controls['email'].errors" class="form-text text-danger"
+                 id="emailHelp">
+              <span *ngIf="loginFormGroup.controls['email'].errors['required']">Email is required</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="pswdInput" class="form-label">Password</label>
+            <input type="password" formControlName="password" aria-describedby="pswdInputHelp" class="form-control" id="pswdInput">
+            <div *ngIf="submitted && loginFormGroup.controls['password'].errors" class="form-text text-danger"
+                 id="pswdInputHelp">
+              <span *ngIf="loginFormGroup.controls['password'].errors['required']">Password is required</span>
+            </div>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button (click)="goLogin()" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

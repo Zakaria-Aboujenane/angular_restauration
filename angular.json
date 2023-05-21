@@ -19,13 +19,15 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
+              "src/favicon.png",
               "src/assets"
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -62,6 +64,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "./proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "ZedRestau:build:production"
@@ -97,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "7bea86ca-4ad6-4972-b8fe-5c759dd9679c"
   }
 }

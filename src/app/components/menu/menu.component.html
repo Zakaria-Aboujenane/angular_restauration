@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand text-success logo h1" href="#" routerLink="/">
+      <img alt="" class="d-inline-block align-text-top" height="50" src="assets/img/zerda-logo.png" width="100">
+    </a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a aria-current="page" class="nav-link {{ currPage==='home'?'active':''}}" href="#"
+             routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ currPage==='shop'?'active':''}}" href="#" routerLink="/shop">Shop</a>
+        </li>
+      </ul>
+
+      <div class="d-flex">
+        <input [(ngModel)]="keyword" aria-label="Search" class="form-control me-2" placeholder="Search" type="search">
+        <button (click)="searchMenu()" class="btn btn-outline-success">Search</button>
+      </div>
+      <div *ngIf="!auth" class="d-flex m-lg-1">
+        <a class="nav-icon d-none d-lg-inline p-1">
+          <button routerLink="/login/1" class="btn btn-dark" type="button">Login</button>
+        </a>
+        <a class="nav-icon d-none d-lg-inline p-1 ">
+          <button routerLink="/register" class="btn btn-dark" type="button">Register</button>
+        </a>
+      </div>
+
+      <div *ngIf="auth" class="navbar align-self-center d-flex">
+        <a routerLink="/cart" class="nav-icon position-relative text-decoration-none mx-3" href="./cart">
+          <i class="fa fa-shopping-cart fa-3x link-success" aria-hidden="true"></i>
+          <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"
+                id="panierLabelID">{{cartItems}}</span>
+        </a>
+        <a aria-expanded="false" class="btn btn-secondary dropdown-toggle mx-5" data-bs-toggle="dropdown" href="#"
+           id="dropdownMenuLink" role="button">
+          <i class="fa fa-fw fa-user text-dark mr-3"></i>
+        </a>
+        <ul aria-labelledby="dropdownMenuLink" class="dropdown-menu">
+          <li>
+            <div class="text-success" role="alert">
+              <i class="fa fa-fw fa-user text-dark mr-3"></i>
+            </div>
+          </li>
+          <li><a class="dropdown-item" href="#">Mon profile</a></li>
+          <li><a class="dropdown-item" href="./logout">
+            <button class="btn btn-dark" type="button">
+              se deconnecter
+            </button>
+          </a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</nav>

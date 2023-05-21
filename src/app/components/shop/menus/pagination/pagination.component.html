@@ -1,0 +1,14 @@
+ <nav aria-label="..." class="pull-right">
+    <ul class="pagination" >
+      <li class="page-item {{prevBtnStatus?'':'disabled'}} text-danger">
+        <a class="page-link" style="cursor: pointer;" (click)="onGoToPage($event,currPage-1)" >Previous</a>
+      </li>
+
+      <li style="    --bs-pagination-active-bg: #146c43;" *ngFor="let n of numbersToShow;trackBy:trackToken" class="page-item {{n===currPage?'active':''}}">
+        <a class="page-link text-black" style="cursor: pointer;" (click)="onGoToPage($event,n)" >{{n}}</a>
+      </li>
+      <li   class="page-item {{nextBtnStatus?'':'disabled'}}">
+        <a class="page-link" style="cursor: pointer;" (click)="onGoToPage($event,currPage+1)" >Next</a>
+      </li>
+    </ul>
+  </nav>

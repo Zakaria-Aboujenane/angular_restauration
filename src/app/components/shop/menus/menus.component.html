@@ -1,0 +1,46 @@
+<div style="animation: fadeIn 5s;">
+  <ng-container *ngIf="menusState$ | async as state" [ngSwitch]="state.dataState">
+
+    <ng-container *ngSwitchCase="DataStateEnum.INITIAL" >
+      <div> <h5>Initial State</h5></div>
+
+    </ng-container>
+    <ng-container *ngSwitchCase="DataStateEnum.LOADING" >
+      <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="DataStateEnum.ERROR" >
+      <div class="alert alert-danger" > {{state.errorMessage | json}}</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="DataStateEnum.LOADED" >
+      <div class="myTransactions">
+        <div class="alert alert-danger m-3" *ngIf="state.menus.length===0" role="alert">
+          Aucun menu trouve !
+        </div>
+
+        <table  *ngIf="modeAffichage==='TABLE'" class="table">
+          <tr>
+            <th>ID</th><th>Name</th> <th>Prix</th> <th>Quantite</th> <th>Image</th>
+          </tr>
+
+            <app-single-menu [modeAffichage]="modeAffichage" *ngFor="let menu of state.menus;trackBy:trackToken" [menu]="menu" style="display: contents"></app-single-menu>
+        </table>
+
+        <ng-container *ngIf="modeAffichage==='GRID'">
+          <div class="row">
+            <app-single-menu  [modeAffichage]="modeAffichage"   *ngFor="let menu of state.menus;trackBy:trackToken" [menu]="menu"  style="display: contents"></app-single-menu>
+          </div>
+        </ng-container>
+
+      </div>
+      <app-pagination *ngIf="state.menus.length>0"></app-pagination>
+    </ng-container>
+
+  </ng-container>
+
+</div>
+
+

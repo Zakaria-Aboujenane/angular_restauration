@@ -1,0 +1,28 @@
+
+  <h1 class="h2 pb-4">Categories</h1>
+  <ul class="list-unstyled templatemo-accordion">
+    <ng-container *ngIf="(cats$ | async) as result" [ngSwitch]="result.dataState" >
+      <ng-container *ngSwitchCase="state.LOADING" >
+        Loading ....
+
+      </ng-container>
+      <ng-container *ngSwitchCase="state.ERROR" >
+        <div class="alert alert-danger" > {{result.error | json}}</div>
+      </ng-container>
+      <ng-container *ngSwitchCase="state.LOADED" >
+
+        <li *ngFor="let cat of result.data" class="pb-3">
+          <a style="cursor:pointer;" class="collapsed d-flex justify-content-between h3 text-decoration-none" (click)="getMenusByCat(cat.id_categorie)">
+            {{cat.name}}
+            <i class="fa fa-fw fa-chevron-circle-right mt-1"></i>
+          </a>
+        </li>
+        <ng-container *ngIf="result.data">
+          <div class="alert alert-danger" *ngIf="result.data.length===0" > Pas de categories</div>
+        </ng-container>
+      </ng-container>
+
+
+    </ng-container>
+
+  </ul>
